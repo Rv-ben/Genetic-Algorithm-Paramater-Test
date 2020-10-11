@@ -30,13 +30,13 @@ class board:
     def setNQueens(self, n):
         self.n_queens = n
     
-    def setBoardArray(self, array):
+    def setEncodedArray(self, array):
         self.boardArray =  array
 
     def getNQuenns(self):
         return self.n_queens
 
-    def getBoardArray(self):
+    def getEncodedArray(self):
         return self.boardArray
 
     def getFitness(self):
@@ -76,5 +76,5 @@ class board:
 
 
 x = board(6)
-print(x.getBoardArray())
+print(x.getEncodedArray())
 x.show()

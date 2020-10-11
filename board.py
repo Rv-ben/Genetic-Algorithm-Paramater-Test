@@ -23,7 +23,7 @@ class board:
     boardArray = []
 
     def __init__(self,n):
-        self.boardArray = random.sample(range(1,n+1),n)
+        self.boardArray = random.sample(range(0,n),n)
         self.n_queens = n 
         self.calcFitness()
 
@@ -32,6 +32,7 @@ class board:
     
     def setEncodedArray(self, array):
         self.boardArray =  array
+        self.calcFitness()
 
     def getNQuenns(self):
         return self.n_queens
@@ -60,12 +61,12 @@ class board:
 
     def show(self):
         
-        array = self.boardArray
+        print(self.boardArray)
 
-        for i in range(0,len(array)):
-            for j in range(1,len(array)+1):
+        for i in range(0,len(self.boardArray)):
+            for j in range(0,len(self.boardArray)):
                 
-                if(j == array[i]):
+                if(j == self.boardArray[i]):
                     print("X",end='')
                 else:
                     print("-",end='')
@@ -74,7 +75,3 @@ class board:
         print("Fitness: "+str(self.fitness))
 
 
-
-x = board(6)
-print(x.getEncodedArray())
-x.show()

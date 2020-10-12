@@ -37,10 +37,6 @@ class genetic:
         #List of indexies for surviving objects
         selectedIndexies = []
         
-        print('--Start-----')
-        print(self.objects)
-        print('-----------')
-
         #n selections
         for i in range(self.selectionNum):
             
@@ -74,9 +70,6 @@ class genetic:
         
         self.objects = survivingObjects
 
-        print('---END-----')
-        print(self.objects)
-        print('-----------')
 
     def crossOver(self):
 

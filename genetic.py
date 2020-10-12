@@ -24,7 +24,7 @@ class genetic:
     
         #list of selections
         selections = []
-        
+    
         #sum of fitnesses
         fitSum = 0
         for x in self.objects:
@@ -37,6 +37,10 @@ class genetic:
         #List of indexies for surviving objects
         selectedIndexies = []
         
+        print('--Start-----')
+        print(self.objects)
+        print('-----------')
+
         #n selections
         for i in range(self.selectionNum):
             
@@ -50,14 +54,15 @@ class genetic:
             endRange = selections[0]
             
             #n possible ranges
-            for j in range(self.selectionNum-1):
+            for j in range(self.selectionNum -1):
                 # StartRange <= r < EndRange 
                 if(startRange <= r and r < endRange):
                     #Store index of the selected object
                     selectedIndexies.append(j)
                     break
-                if(j==self.n-2):
+                elif(j==self.n-2):
                     selectedIndexies.append(j)
+                    break
                 
                 #Update the range
                 startRange = endRange
@@ -67,9 +72,14 @@ class genetic:
         for i in selectedIndexies:
             survivingObjects.append(copy.copy(self.objects[i]))
         
-        return survivingObjects
+        self.objects = survivingObjects
+
+        print('---END-----')
+        print(self.objects)
+        print('-----------')
 
     def crossOver(self):
+
     
         for i in range(0,len(self.objects)-1,2): #Start at 0 iterate by 2 for pairs
 
@@ -121,7 +131,7 @@ class genetic:
             count = count + 1
             
             #Use the select function to get surviving objects
-            self.objects = self.selection()
+            self.selection()
 
             #Preform CrossOver
             self.crossOver()

@@ -7,7 +7,8 @@ class genetic:
     n = 0 #The length of the encoded string for an object
     selectionNum = 0
     solution = None
-    iterations = 0 #Number of genetic iterations 
+    iterations = 0 #Number of genetic iterations
+    probablityOfMutation = 0 
 
     def getSolution(self):
         return self.solution
@@ -15,10 +16,18 @@ class genetic:
     def getIterations(self):
         return self.iterations
 
-    def __init__(self,objects,n):
+    def __init__(self,objects,n,mutation):
         self.n = n
         self.objects = objects
         self.selectionNum = len(objects)
+        self.probablityOfMutation = m
+
+    def reset(self,objects,n,mutation):
+        self.n = n
+        self.objects = objects
+        self.selectionNum = len(objects)
+        solution = None
+        iterations = 0 #Number of genetic iterations 
 
     def selection(self):
     
@@ -92,7 +101,7 @@ class genetic:
         for object in self.objects:
             
             #Get random index to mutate 0-n
-            mutatedIndex = random.randint(0,self.n)
+            mutatedIndex = random.randint(0,self.probablityOfMutation)
             
             #Give a chance to not mutate
             if(mutatedIndex < self.n):
@@ -115,7 +124,7 @@ class genetic:
         
         #While the object with best fitness is not equal to 0, the solution
         while(self.objects[0].getFitness() != 0):
-            
+        
             #increment count
             count = count + 1
             
@@ -130,6 +139,6 @@ class genetic:
                 
             #Sort objects by fitness
             self.objects = sorted(self.objects, key=lambda object:object.fitness)
-        
+            
         self.solution = self.objects[0]
         self.iterations = count

@@ -27,16 +27,16 @@ class genetic:
     
         #sum of fitnesses
         fitSum = 0
-        for x in self.objects:
-            fitSum = fitSum + x.getFitness()
+        for i in range(self.selectionNum):
+            fitSum = fitSum + self.objects[i].getFitness()
             
         #calculate and store all selections
-        for x in self.objects:
-            selections.append(x.getFitness()/fitSum)
+        for i in range(self.selectionNum):
+            selections.append(self.objects[i].getFitness()/fitSum)
         
         #List of indexies for surviving objects
         selectedIndexies = []
-        
+
         #n selections
         for i in range(self.selectionNum):
             
@@ -50,19 +50,15 @@ class genetic:
             endRange = selections[0]
             
             #n possible ranges
-            for j in range(self.selectionNum -1):
-                # StartRange <= r < EndRange 
-                if(startRange <= r and r < endRange):
-                    #Store index of the selected object
-                    selectedIndexies.append(j)
-                    break
-                elif(j==self.n-2):
-                    selectedIndexies.append(j)
-                    break
+            for j in range(len(selections)):
                 
-                #Update the range
+                if(r > startRange and r <= endRange):
+                    selectedIndexies.append(j)
+                    break
+
                 startRange = endRange
-                endRange = endRange + selections[i]
+                endRange = endRange + selections[j+1]
+
         
         survivingObjects = []
         for i in selectedIndexies:

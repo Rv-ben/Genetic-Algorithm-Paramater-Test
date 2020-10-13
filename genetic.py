@@ -20,7 +20,7 @@ class genetic:
         self.n = n
         self.objects = objects
         self.selectionNum = len(objects)
-        self.probablityOfMutation = m
+        self.probablityOfMutation = mutation
 
     def reset(self,objects,n,mutation):
         self.n = n

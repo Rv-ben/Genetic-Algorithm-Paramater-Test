@@ -26,8 +26,8 @@ class genetic:
         self.n = n
         self.objects = objects
         self.selectionNum = len(objects)
-        solution = None
-        iterations = 0 #Number of genetic iterations 
+        self.solution = None
+        self.iterations = 0 #Number of genetic iterations 
 
     def selection(self):
     
